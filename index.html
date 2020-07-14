@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+           h1{
+                font-family: 'Noto Sans JP', sans-serif;
+                font-size: 50px;
+                text-align: center;
+                padding: 20px;
+               
+           }
+           p {
+            font-family: 'Noto Sans JP', sans-serif; 
+            font-weight: 300;
+           }
+           body{
+               background-color: black;
+           }
+           .center {
+               margin: 0 auto;
+           }
+           .main-content{
+               
+               padding: 50px 20px;
+               margin: 0 auto;
+               max-width:900px;
+               
+               border: 5px grey solid;
+               box-shadow: 4px 4px 8px black;
+               
+           }
+           .my-image{
+                background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/07/Download-Free-Weather-Background.jpg');
+                background-size: cover;
+                padding-top: 50px;
+                padding-bottom: 50px;
+                margin-top: 200px;
+                margin-left:auto;
+                margin-right:auto;
+                display: flex;
+                
+           }
+           
+           
+        </style>
+
+<script type='text/javascript'>
+                
+                    
+    var apikey = '603e534566c1f17974eb79181bdf7102';
+    var zipCode
+    var countryCode = 'us';
+
+    
+    function search (event) {
+        document.getElementById('weatherInfo').innerHTML = '';
+        document.getElementById('weatherIcon').innerHTML = '';
+
+        event.preventDefault();
+
+        zipCode = parseInt(document.getElementById('zipSearch').value, 10);
+        console.log(zipCode)
+
+        $.get(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?zip=${zipCode},${countryCode}&appid=${apikey}`, function (data) {
+            ''
+        console.log(data);
+        
+        var card = document.createElement('div')
+        var allData = document.createElement ('p');
+        allData.innerHTML = 'Your city is ' + '<b>' + data.name + '</b>.' + '<br>' + 'Currently it is ' + ((data.main.temp - 273.15) * 9/5 + 32).toFixed(1) + '° F with ' + data.weather[0].description + '.';
+        console.log(data)
+        var weatherInfo = document.getElementById('weatherInfo')
+        weatherInfo.appendChild(allData);
+        var picture = document.createElement('img');
+        picture.src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
+        var weatherIcon = document.getElementById('weatherIcon')
+        weatherIcon.appendChild(picture);
+       
+
+
+    });
+    
+};
+
+            </script>
+        
+    </head>
+    <body>
+        <div class='container-fluid my-image'>
+            <div class='row center my-auto w-100'>
+                <div class='col-3'></div>
+                <div class= 'col-6 main-content card center'>
+                    <h1>BASIC WEATHER</h1>
+                    <form class="form-inline my-2 my-lg-0 center">
+                    <input class="form-control mr-sm-2 center" type="text" id = 'zipSearch' placeholder="Enter your zip code" aria-label="Search">
+                    <button class="btn btn-primary center" onclick='search(event)' id="search-button" style='margin-right: 10px'>Search</button>
+                    <div class="center" id=weatherInfo></div>
+                    <div class="center" id=weatherIcon>
+                        
+                    </div>  
+                </div>
+                <div class='col-3'></div>
+            </div>    
+        </div>
+        
+        
+    </body>
+</html>

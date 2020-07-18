@@ -1,0 +1,44 @@
+h1{
+    font-family: 'Raleway', sans-serif;
+    font-size: 50px;
+    text-align: center;
+    padding: 20px;
+   
+}
+p {
+font-family: 'Noto Sans JP', sans-serif; 
+font-weight: 300;
+}
+body{
+   background-color: black;
+}
+.center {
+   margin: 0 auto;
+}
+.super-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.main-content{
+   
+   padding: 50px 20px;
+   margin: 0 auto;
+   max-width:900px;
+   border: 5px grey solid;
+   box-shadow: 4px 4px 8px black;
+   
+}
+.my-image{
+    background-image: url('bg-image.jpg');
+    background-size: cover;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    /* margin-top: 200px;
+    margin-left:auto;
+    margin-right:auto;
+    display: flex; */  
+}

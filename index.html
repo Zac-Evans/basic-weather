@@ -22,6 +22,14 @@
            .center {
                margin: 0 auto;
            }
+           .super-center {
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+           }
            .main-content{
                
                padding: 50px 20px;
@@ -33,14 +41,14 @@
                
            }
            .my-image{
-                background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/07/Download-Free-Weather-Background.jpg');
+                background-image: url('bg-image.jpg');
                 background-size: cover;
-                padding-top: 50px;
-                padding-bottom: 50px;
-                margin-top: 200px;
+                padding-top: 90px;
+                padding-bottom: 90px;
+                /* margin-top: 200px;
                 margin-left:auto;
                 margin-right:auto;
-                display: flex;
+                display: flex; */
                 
            }
            
@@ -65,7 +73,7 @@
         console.log(zipCode)
 
         $.get(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?zip=${zipCode},${countryCode}&appid=${apikey}`, function (data) {
-            ''
+            
         console.log(data);
         
         var card = document.createElement('div')
@@ -89,7 +97,7 @@
         
     </head>
     <body>
-        <div class='container-fluid my-image'>
+        <div class='container-fluid my-image super-center'>
             <div class='row center my-auto w-100'>
                 <div class='col-3'></div>
                 <div class= 'col-6 main-content card center'>

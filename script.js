@@ -18,15 +18,20 @@ var apikey = '603e534566c1f17974eb79181bdf7102';
         
         var card = document.createElement('div')
         var allData = document.createElement ('p');
-        allData.innerHTML = 'Your city is ' + '<b>' + data.name + '</b>.' + '<br>' + 'Currently it is ' + ((data.main.temp - 273.15) * 9/5 + 32).toFixed(1) + '° F with ' + data.weather[0].description + '.';
+        allData.innerHTML = 'Your city is ' + '<b>' + data.name + '</b>.' + '<br>' + 'Currently it is ' + ((data.main.temp - 273.15) * 9/5 + 32).toFixed(1) + "° F with " + data.weather[0].description + '.';
+
         console.log(data)
+
         var weatherInfo = document.getElementById('weatherInfo')
+        
         weatherInfo.appendChild(allData);
         var picture = document.createElement('img');
         picture.src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
         var weatherIcon = document.getElementById('weatherIcon')
         weatherIcon.appendChild(picture);
-       
+
+        var theWeather = document.getElementById('theWeather');
+        theWeather.style('border: 5px solid black')
 
 
     });
